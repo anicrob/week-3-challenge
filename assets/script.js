@@ -62,8 +62,6 @@ function generatePassword(){
         password = concat(lettersLC[indexLCLetters] + lettersUC[indexUCLetters] + spChars[indexSpecChar])
       }
       return;
-
-
 }
 
 // Write password to the #password input
@@ -76,8 +74,7 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
-//start function
+generateBtn.addEventListener("click", writePassword());
 
 
 
