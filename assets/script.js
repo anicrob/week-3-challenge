@@ -9,7 +9,7 @@ var needLowerCase = false;
 var needUpperCase = false;
 var password = null;
 
-function generatePassword(){
+function generatePassword() {
     //first figure out the password length
     function figurePwLength() {
         //ask the user what the pw length should be
@@ -31,6 +31,7 @@ function generatePassword(){
             figurePwLength();
           }
       }
+      figurePwLength();
       //function containing all confirmations for character types
       var confirmCharTypes = function (){
         //confirm if the user wants lowercase characters
@@ -49,6 +50,7 @@ function generatePassword(){
               confirmCharTypes();
           }  
       }
+      confirmCharTypes();
       //random index values
       var indexLCLetters = Math.floor(Math.random() * lettersLC.length);
       var indexUCLetters = Math.floor(Math.random() * lettersUC.length);
@@ -61,7 +63,6 @@ function generatePassword(){
       ) {
         password = concat(lettersLC[indexLCLetters] + lettersUC[indexUCLetters] + spChars[indexSpecChar])
       }
-      return;
 }
 
 // Write password to the #password input
