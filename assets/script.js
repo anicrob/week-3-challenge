@@ -51,17 +51,31 @@ function generatePassword() {
           }  
       }
       confirmCharTypes();
-      //random index values
-      var indexLCLetters = Math.floor(Math.random() * lettersLC.length);
-      var indexUCLetters = Math.floor(Math.random() * lettersUC.length);
-      var indexSpecChar = Math.floor(Math.random() * spChars.length);
-
+   //if all character types are true
       if (
         needLowerCase === true &&
         needUpperCase === true &&
         needSpecialChar === true 
       ) {
-        password = concat(lettersLC[indexLCLetters] + lettersUC[indexUCLetters] + spChars[indexSpecChar])
+        var allArrays = concat(lettersLC + lettersUC + spChars);
+        // i less than password length or array length?
+        for (var i; i < passwordLength; i++){
+            index = Math.floor(Math.random() * allArrays.length);
+            //how to get it be all of the i's added together
+            password = allArrays[index];
+        }
+      } else if (
+        needLowerCase === true &&
+        needUpperCase === true &&
+        needSpecialChar === false
+      ) {
+
+      } else if (
+        needLowerCase === false &&
+        needUpperCase === true &&
+        needSpecialChar === true 
+      ) {
+        
       }
 }
 
