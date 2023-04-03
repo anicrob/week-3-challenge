@@ -8,13 +8,21 @@ var needSpecialChar = false;
 var needLowerCase = false;
 var needUpperCase = false;
 var password = null;
-
+console.log('hello')
 function generatePassword() {
     //first figure out the password length
     function figurePwLength() {
         //ask the user what the pw length should be
         var passwordLength = prompt("How long would you like your password to be?");
         console.log('password length', passwordLength);
+        passwordLength = parseInt(passwordLength, 10)
+        for (var i; i < passwordLength; i++){
+          console.log('i', i)
+          index = Math.floor(Math.random() * allArrays.length);
+          //how to get it be all of the i's added together
+          console.log("see if this works", password);
+          password = allArrays[index];
+      }
         console.log(typeof passwordLength)
         //ensure that it is between 8 to 128 characters
         if(
@@ -23,14 +31,14 @@ function generatePassword() {
             //let the user know that it needs to be between 8 to 128 characters and restart function
           ) {
             alert("password must be between 8 to 128 characters");
-            figurePwLength();
+            // figurePwLength();
             //stop function if user hits cancel
           } else if (passwordLength === null) {
               return;
               //ensure that the input is a number
           } else if (typeof passwordLength !== Number){
             alert("password length must be a number");
-            figurePwLength();
+            // figurePwLength();
           }
       }
       figurePwLength();
