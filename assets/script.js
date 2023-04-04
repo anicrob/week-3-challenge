@@ -107,6 +107,7 @@ function generatePassword() {
       //if it is within 8 to 128 characters turn it into an integer
       else {
         passwordLength = parseInt(passwordLength);
+        console.log('type of password:>>>>>', typeof passwordLength);
         //if it is included in the correctInputs array, stop 
         if(correctInputs.includes(passwordLength)){
           return;
@@ -122,15 +123,23 @@ function generatePassword() {
     function confirmCharTypes() {
       //confirm if the user wants lowercase characters
       needLowerCase = confirm('Do you want to include lowercase letters?');
+      needLowerCase = needLowerCase.toString();
+      console.log(typeof needLowerCase);
       //confirm if the user wants uppercase characters
       needUpperCase = confirm('Do you want to include upper case letters?');
+      needUpperCase = needUpperCase.toString();
+      console.log(typeof needUpperCase);
       //confirm if the user wants numbers
       needInteger = confirm("Do you want to include numbers?")
+      needInteger = needInteger.toString();
+      console.log(typeof needInteger);
       //confirm if the user wants special characters
       needSpecialChar = confirm('Do you want special charcters?');
+      needSpecialChar = needSpecialChar.toString();
+      console.log(typeof needSpecialChar);
+
       result = needLowerCase + needUpperCase + needInteger + needSpecialChar;
       console.log(result);
-
     }
    confirmCharTypes();
     //ensure that at least one type of special character was chosen
@@ -138,16 +147,15 @@ function generatePassword() {
       result = "falsefalsefalsefalse"
     ) {
       alert(
-        'You need at least one character type - lower case, upper case, or special characters'
+        'You need at least one character type - lower case, upper case, numbers, or special characters'
       );
       confirmCharTypes();
     }
   //if all character types are true
-  console.log('needLowerCase:', needLowerCase)
-  if (
+    else if (
     result = "truetruetruetrue"
   ) {
-    var allArrays = lettersLC.concat(lettersUC).concat(spChars);
+    var allArrays = lettersLC.concat(lettersUC).concat(integer).concat(spChars);
     console.log('allArrays:', allArrays)
     console.log('passwordLength:', passwordLength)
     for (var i = 0; i < passwordLength + 1; i++) {
@@ -156,17 +164,19 @@ function generatePassword() {
       //how to get it be all of the i's added together
       password = password.concat(allArrays[index - 1]);
     }
-  } else if (
-    needLowerCase === true &&
-    needUpperCase === true &&
-    !needSpecialChar === false
-  ) {
-  } else if (
-    needLowerCase === false &&
-    needUpperCase === true &&
-    needSpecialChar === true
-  ) {
   }
+    //other conditions to come:
+  // } else if (
+  //   needLowerCase === true &&
+  //   needUpperCase === true &&
+  //   !needSpecialChar === false
+  // ) {
+  // } else if (
+  //   needLowerCase === false &&
+  //   needUpperCase === true &&
+  //   needSpecialChar === true
+  // ) {
+  // }
   generatePassword();
 }
 
@@ -188,4 +198,4 @@ generateBtn.addEventListener('click', writePassword);
 //concatenate UC to AoC
 //ask user if LC
 //concatenate LC to AoC
-// if not then next question
+//if not then next question
