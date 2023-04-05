@@ -140,6 +140,7 @@ function confirmCharTypes() {
     calculatedArrayOptions = calculatedArrayOptions + lettersUC;
   }
   //confirm if the user wants numbers
+  needInteger = confirm("Do you want to include integers?");
   if (needInteger) {
     calculatedArrayOptions = calculatedArrayOptions + integer;
   }
