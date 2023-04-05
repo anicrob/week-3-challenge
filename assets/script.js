@@ -86,153 +86,101 @@ var needUpperCase = false;
 var needInteger = false;
 var password = [" "];
 var passwordLength = 0;
-var result = null
-var calculatedArrayOptions =
-  //have a password array variable and at each question add onto it
+var result = null;
+var calculatedArrayOptions = [" "];
 
-  function generatePassword() {
-    //first figure out the password length
-    function figurePwLength() {
-      //ask the user what the pw length should be
-      passwordLength = prompt('How long would you like your password to be?');
-      console.log('password length:>>>>>', passwordLength);
-      console.log('type of password:>>>>>', typeof passwordLength);
-
-      //first ensure that the password is within 8 to 128 characters
-      if (
-        passwordLength < 8 ||
-        passwordLength > 128
-      ) {
-        alert('password must be between 8 to 128 characters');
-        figurePwLength();
-      }
-      //if it is within 8 to 128 characters turn it into an integer
-      else {
-        passwordLength = parseInt(passwordLength);
-        console.log('type of password:>>>>>', typeof passwordLength);
-        //if it is included in the correctInputs array, stop 
-        if (correctInputs.includes(passwordLength)) {
-          return;
-        }
-        //if it is not in the array that means it's a letter
-        else {
-          alert("the password length must be a number");
-          figurePwLength();
-        }
-      }
-    }
-    figurePwLength();
-    function confirmCharTypes() {
-      //confirm if the user wants lowercase characters
-      needLowerCase = confirm('Do you want to include lowercase letters?');
-      needLowerCase = needLowerCase.toString();
-      console.log(typeof needLowerCase);
-      if (needLowerCase) {
-        calculatedArrayOptions = lettersLC;
-      }
-      //confirm if the user wants uppercase characters
-      needUpperCase = confirm('Do you want to include upper case letters?');
-      needUpperCase = needUpperCase.toString();
-      console.log(typeof needUpperCase);
-      if (needUpperCase) {
-        calculatedArrayOptions = calculatedArrayOptions + lettersUC;
-      }
-      //confirm if the user wants numbers
-      needInteger = confirm("Do you want to include numbers?")
-      needInteger = needInteger.toString();
-      console.log(typeof needInteger);
-      if (needInteger) {
-        calculatedArrayOptions = calculatedArrayOptions + integer;
-      }
-      //confirm if the user wants special characters
-      needSpecialChar = confirm('Do you want special charcters?');
-      needSpecialChar = needSpecialChar.toString();
-      console.log(typeof needSpecialChar);
-
-      result = needLowerCase + needUpperCase + needInteger + needSpecialChar;
-      console.log(result);
-      console.log("passwordL", passwordLength);
-    }
-    confirmCharTypes();
-    //ensure that at least one type of special character was chosen
-    if (
-      result === "falsefalsefalsefalse"
-    ) {
-      alert(
-        'You need at least one character type - lower case, upper case, numbers, or special characters'
-      );
-      confirmCharTypes();
-    }
-    //if all character types are true
-    else if (
-      result === "truetruetruetrue"
-    ) {
-      // calculatedArrayOptions = lettersLC.concat(lettersUC).concat(integer).concat(spChars);
-      console.log('passwordLength:', passwordLength)
-      password.shift();
-      console.log('new password:', password);
-      for (var i = 0; i < passwordLength + 1; i++) {
-        console.log('see if this works', password);
-        index = Math.floor(Math.random() * allArrays.length);
-        //how to get it be all of the i's added together
-        password = password.concat(allArrays[index - 1]);
-
-      }
-    } else if (
-      result === "truefalsefalsefalse"
-    ) {
-
-    } else if (
-      result === "falsetruefalsefalse"
-    ) {
-
-    } else if (
-      result === "falsefalsetruefalse"
-    ) {
-
-    } else if (
-      result === "falsefalsefalsetrue"
-    ) {
-
-    } else if (
-      result === "truefalsetruefalse"
-    ) {
-
-    } else if (
-      result === "falsetruetruetrue"
-    ) {
-
-    } else if (
-      result === "truefalsetruetrue"
-    ) {
-
-    } else if (
-      result === "truetruefalsetrue"
-    ) {
-
-    } else if (
-      result === "truetruetruefalse"
-    ) {
-
-      // } else if (
-
-      //   ) {
-
-      // } else if (
-
-      //   ) {
-
-      //     } 
-
-    }
-
-    //other conditions to come
-
-    password = password.join();
-    console.log("Should be a string now", password);
-    generatePassword();
+function computerRandomizePw() {
+  console.log('passwordLength:', passwordLength)
+  password.shift();
+  console.log('new password:', password);
+  for (var i = 0; i < passwordLength; i++) {
+    index = Math.floor(Math.random() * calculatedArrayOptions.length);
+    //how to get it be all of the i's added together
+    password = password.concat(calculatedArrayOptions[index - 1]);
   }
+  return;
+}
+function figurePwLength() {
+  //ask the user what the pw length should be
+  passwordLength = prompt('How long would you like your password to be?');
+  console.log('password length:>>>>>', passwordLength);
+  console.log('type of password:>>>>>', typeof passwordLength);
 
+  //first ensure that the password is within 8 to 128 characters
+  if (
+    passwordLength < 8 ||
+    passwordLength > 128
+  ) {
+    alert('password must be between 8 to 128 characters');
+    figurePwLength();
+  }
+  //if it is within 8 to 128 characters turn it into an integer
+  else {
+    passwordLength = parseInt(passwordLength);
+    console.log('type of password:>>>>>', typeof passwordLength);
+    //if it is included in the correctInputs array, stop 
+    if (correctInputs.includes(passwordLength)) {
+      return;
+    }
+    //if it is not in the array that means it's a letter
+    else {
+      alert("the password length must be a number");
+      figurePwLength();
+    }
+  } return;
+}
+function confirmCharTypes() {
+  //confirm if the user wants lowercase characters
+  needLowerCase = confirm('Do you want to include lowercase letters?');
+  needLowerCase = needLowerCase.toString();
+  console.log(typeof needLowerCase);
+  if (needLowerCase) {
+    calculatedArrayOptions = lettersLC;
+  }
+  //confirm if the user wants uppercase characters & assign calculatedArrayOptions values
+  needUpperCase = confirm('Do you want to include upper case letters?');
+  needUpperCase = needUpperCase.toString();
+  console.log(typeof needUpperCase);
+  if (needUpperCase) {
+    calculatedArrayOptions = calculatedArrayOptions + lettersUC;
+  }
+  //confirm if the user wants numbers
+  needInteger = confirm("Do you want to include numbers?")
+  needInteger = needInteger.toString();
+  console.log(typeof needInteger);
+  if (needInteger) {
+    calculatedArrayOptions = calculatedArrayOptions + integer;
+  }
+  //confirm if the user wants special characters
+  needSpecialChar = confirm('Do you want special charcters?');
+  needSpecialChar = needSpecialChar.toString();
+  console.log(typeof needSpecialChar);
+  if (needSpecialChar){
+    calculatedArrayOptions = calculatedArrayOptions + spChars;
+  }
+  result = needLowerCase + needUpperCase + needInteger + needSpecialChar;
+  console.log("order: Lowercase, Uppercase, integers, and special characters", result);
+  console.log("passwordL", passwordLength);
+  return;
+}
+function generatePassword() {
+  //first figure out the password length
+  figurePwLength();
+  confirmCharTypes();
+  //ensure that at least one type of special character was chosen
+  if (
+    result === "falsefalsefalsefalse"
+  ) {
+    alert(
+      'You need at least one character type - lower case, upper case, numbers, or special characters'
+    );
+    confirmCharTypes();
+  }
+  computerRandomizePw();
+  password = password.join("");
+  console.log('see if this works should be a string', password);
+  return password;
+}
 // Write password to the #password input
 function writePassword() {
   console.log('hello');
