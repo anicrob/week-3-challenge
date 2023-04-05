@@ -11,10 +11,12 @@ This password generator will allow you to create a password to you liking, by ch
 6. Lastly, choose whether you would like special characters in your password.
 7. The password will appear within the "Your Secure Password" box. Feel free to copy this into your password manager.
 ## Credits
-Starter code provided by UNC Chapel Hill. The generatePassword() function and a few additional variables were created by Andrea Robbins.
-## Screenshots
+The CSS, HTML, and any element described by a comment that says "- provided in starter code" was provided by UNC Chapel Hill. Everything else was created by me. 
+
+I had assistance with this assignment from Santi P (TA) and learning assistants. 
+## Screenshot
 ![Screenshot](./assets/pw-generator-screenshot.png)
 ## Link to Repo and Deployed Application
 Link to Repo: https://github.com/anicrob/week-3-challenge
 
-Link to Deployed Application: 
+Link to Deployed Application: https://anicrob.github.io/week-3-challenge/
