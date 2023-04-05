@@ -165,7 +165,7 @@ function computerRandomizePw() {
   for (var i = 0; i < passwordLength; i++) {
     index = Math.floor(Math.random() * calculatedArrayOptions.length);
     //how to add together the values into an array
-    password = password.concat(calculatedArrayOptions[index - 1]);
+    password = password.concat(calculatedArrayOptions[index]);
   }
   return;
 }
