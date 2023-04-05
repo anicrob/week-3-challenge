@@ -86,7 +86,6 @@ var needUpperCase = false;
 var needInteger = false;
 var password = [" "];
 var passwordLength = 0;
-var result = null;
 var calculatedArrayOptions = [" "];
 
 function computerRandomizePw() {
@@ -132,35 +131,25 @@ function figurePwLength() {
 function confirmCharTypes() {
   //confirm if the user wants lowercase characters
   needLowerCase = confirm('Do you want to include lowercase letters?');
-  needLowerCase = needLowerCase.toString();
-  console.log(typeof needLowerCase);
   if (needLowerCase) {
     calculatedArrayOptions = lettersLC;
   }
   //confirm if the user wants uppercase characters & assign calculatedArrayOptions values
   needUpperCase = confirm('Do you want to include upper case letters?');
-  needUpperCase = needUpperCase.toString();
-  console.log(typeof needUpperCase);
   if (needUpperCase) {
     calculatedArrayOptions = calculatedArrayOptions + lettersUC;
   }
   //confirm if the user wants numbers
-  needInteger = confirm("Do you want to include numbers?")
-  needInteger = needInteger.toString();
-  console.log(typeof needInteger);
   if (needInteger) {
     calculatedArrayOptions = calculatedArrayOptions + integer;
   }
   //confirm if the user wants special characters
   needSpecialChar = confirm('Do you want special charcters?');
-  needSpecialChar = needSpecialChar.toString();
-  console.log(typeof needSpecialChar);
   if (needSpecialChar){
     calculatedArrayOptions = calculatedArrayOptions + spChars;
   }
-  result = needLowerCase + needUpperCase + needInteger + needSpecialChar;
-  console.log("order: Lowercase, Uppercase, integers, and special characters", result);
   console.log("passwordL", passwordLength);
+  console.log(needLowerCase, needUpperCase, needInteger, needSpecialChar);
   return;
 }
 function generatePassword() {
@@ -169,7 +158,10 @@ function generatePassword() {
   confirmCharTypes();
   //ensure that at least one type of special character was chosen
   if (
-    result === "falsefalsefalsefalse"
+    needLowerCase === false &&
+    needUpperCase === false &&
+    needInteger === false &&
+    needSpecialChar === false
   ) {
     alert(
       'You need at least one character type - lower case, upper case, numbers, or special characters'
