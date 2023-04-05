@@ -84,9 +84,10 @@ var needSpecialChar = false;
 var needLowerCase = false;
 var needUpperCase = false;
 var needInteger = false;
-var password = '';
+var password = [" "];
 var passwordLength = 0;
 var result = null
+//have a password array variable and at each question add onto it
 
 function generatePassword() {
   //first figure out the password length
@@ -140,11 +141,12 @@ function generatePassword() {
 
       result = needLowerCase + needUpperCase + needInteger + needSpecialChar;
       console.log(result);
+      console.log("passwordL", passwordLength);
     }
    confirmCharTypes();
     //ensure that at least one type of special character was chosen
     if (
-      result = "falsefalsefalsefalse"
+      result === "falsefalsefalsefalse"
     ) {
       alert(
         'You need at least one character type - lower case, upper case, numbers, or special characters'
@@ -153,37 +155,74 @@ function generatePassword() {
     }
   //if all character types are true
     else if (
-    result = "truetruetruetrue"
+    result === "truetruetruetrue"
   ) {
     var allArrays = lettersLC.concat(lettersUC).concat(integer).concat(spChars);
     console.log('allArrays:', allArrays)
     console.log('passwordLength:', passwordLength)
-    for (var i = 0; i < passwordLength + 1; i++) {
+    for (var i = 0; i < passwordLength; i++) {
       console.log('see if this works', password);
       index = Math.floor(Math.random() * allArrays.length);
       //how to get it be all of the i's added together
-      password = password.concat(allArrays[index - 1]);
-    }
+      password = password.concat(allArrays[index]);
+    } 
+  } else if (
+    result === "truefalsefalsefalse"
+  ) {
+      
+    } else if (
+      result === "falsetruefalsefalse"
+    ) {
+        
+    } else if (
+      result === "falsefalsetruefalse"
+  ) {
+      
+    } else if (
+      result === "falsefalsefalsetrue"
+    ) {
+        
+    } else if (
+      result === "truefalsetruefalse"
+    ) {
+        
+    } else if (
+      result === "falsetruetruetrue"
+      ) {
+            
+    } else if (
+      result === "truefalsetruetrue"
+      ) {
+          
+    } else if (
+      result === "truetruefalsetrue"
+      ) {
+          
+    } else if (
+      result === "truetruetruefalse"
+      ) {
+          
+    // } else if (
+
+    //   ) {
+          
+    // } else if (
+
+    //   ) {
+          
+    //     } 
+
   }
-    //other conditions to come:
-  // } else if (
-  //   needLowerCase === true &&
-  //   needUpperCase === true &&
-  //   !needSpecialChar === false
-  // ) {
-  // } else if (
-  //   needLowerCase === false &&
-  //   needUpperCase === true &&
-  //   needSpecialChar === true
-  // ) {
-  // }
-  generatePassword();
+
+    //other conditions to come
 }
+  
+  generatePassword();
 
 // Write password to the #password input
 function writePassword() {
   console.log('hello');
-  var password = generatePassword();
+ password = generatePassword();
   var passwordText = document.querySelector('#password');
 
   passwordText.value = password;
@@ -192,10 +231,3 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener('click', writePassword);
 
-
-//arrayOfChoices
-//ask user if UC
-//concatenate UC to AoC
-//ask user if LC
-//concatenate LC to AoC
-//if not then next question
