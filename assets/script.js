@@ -87,6 +87,7 @@ var needInteger = false;
 var password = [" "];
 var passwordLength = 0;
 var result = null
+var calculatedArrayOptions =
 //have a password array variable and at each question add onto it
 
 function generatePassword() {
@@ -126,10 +127,16 @@ function generatePassword() {
       needLowerCase = confirm('Do you want to include lowercase letters?');
       needLowerCase = needLowerCase.toString();
       console.log(typeof needLowerCase);
+      if(needLowerCase){
+        calculatedArrayOptions = lettersLC;
+      }
       //confirm if the user wants uppercase characters
       needUpperCase = confirm('Do you want to include upper case letters?');
       needUpperCase = needUpperCase.toString();
       console.log(typeof needUpperCase);
+      if(needUpperCase){
+        calculatedArrayOptions = calculatedArrayOptions + lettersUC;
+      }
       //confirm if the user wants numbers
       needInteger = confirm("Do you want to include numbers?")
       needInteger = needInteger.toString();
@@ -157,14 +164,17 @@ function generatePassword() {
     else if (
     result === "truetruetruetrue"
   ) {
-    var allArrays = lettersLC.concat(lettersUC).concat(integer).concat(spChars);
+    calculatedArrayOptions = lettersLC.concat(lettersUC).concat(integer).concat(spChars);
     console.log('allArrays:', allArrays)
     console.log('passwordLength:', passwordLength)
-    for (var i = 0; i < passwordLength; i++) {
+    password.shift();
+    console.log('new password:', password);
+    for (var i = 0; i < passwordLength + 1; i++) {
       console.log('see if this works', password);
       index = Math.floor(Math.random() * allArrays.length);
       //how to get it be all of the i's added together
-      password = password.concat(allArrays[index]);
+      password = password.concat(allArrays[index - 1]);
+      
     } 
   } else if (
     result === "truefalsefalsefalse"
@@ -215,9 +225,11 @@ function generatePassword() {
   }
 
     //other conditions to come
-}
-  
+
+    password = password.toString();
+    console.log("Should be a string now", password);
   generatePassword();
+}
 
 // Write password to the #password input
 function writePassword() {
