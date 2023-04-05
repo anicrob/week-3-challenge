@@ -88,17 +88,6 @@ var password = [" "];
 var passwordLength = 0;
 var calculatedArrayOptions = [" "];
 
-function computerRandomizePw() {
-  console.log('passwordLength:', passwordLength)
-  password.shift();
-  console.log('new password:', password);
-  for (var i = 0; i < passwordLength; i++) {
-    index = Math.floor(Math.random() * calculatedArrayOptions.length);
-    //how to get it be all of the i's added together
-    password = password.concat(calculatedArrayOptions[index - 1]);
-  }
-  return;
-}
 function figurePwLength() {
   //ask the user what the pw length should be
   passwordLength = prompt('How long would you like your password to be?');
@@ -128,6 +117,7 @@ function figurePwLength() {
     }
   } return;
 }
+
 function confirmCharTypes() {
   //confirm if the user wants lowercase characters
   needLowerCase = confirm('Do you want to include lowercase letters?');
@@ -150,7 +140,19 @@ function confirmCharTypes() {
     calculatedArrayOptions = calculatedArrayOptions + spChars;
   }
   console.log("passwordL", passwordLength);
-  console.log(needLowerCase, needUpperCase, needInteger, needSpecialChar);
+  console.log("LC", needLowerCase, "UC", needUpperCase, "integers", needInteger, "specialchars", needSpecialChar);
+  return;
+}
+
+function computerRandomizePw() {
+  console.log('passwordLength:', passwordLength)
+  password.shift();
+  console.log('new password:', password);
+  for (var i = 0; i < passwordLength; i++) {
+    index = Math.floor(Math.random() * calculatedArrayOptions.length);
+    //how to get it be all of the i's added together
+    password = password.concat(calculatedArrayOptions[index - 1]);
+  }
   return;
 }
 function generatePassword() {
@@ -170,7 +172,7 @@ function generatePassword() {
     confirmCharTypes();
   }
   computerRandomizePw();
-  password = password.join("");
+  password = password.toString();
   console.log('see if this works should be a string', password);
   return password;
 }
