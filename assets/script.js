@@ -88,20 +88,20 @@ var password = [" "];
 var passwordLength = 0;
 var result = null
 var calculatedArrayOptions =
-//have a password array variable and at each question add onto it
+  //have a password array variable and at each question add onto it
 
-function generatePassword() {
-  //first figure out the password length
-  function figurePwLength() {
-    //ask the user what the pw length should be
-    passwordLength = prompt('How long would you like your password to be?');
-    console.log('password length:>>>>>', passwordLength);
-    console.log('type of password:>>>>>', typeof passwordLength);
+  function generatePassword() {
+    //first figure out the password length
+    function figurePwLength() {
+      //ask the user what the pw length should be
+      passwordLength = prompt('How long would you like your password to be?');
+      console.log('password length:>>>>>', passwordLength);
+      console.log('type of password:>>>>>', typeof passwordLength);
 
-    //first ensure that the password is within 8 to 128 characters
-    if (
-      passwordLength < 8 ||
-      passwordLength > 128
+      //first ensure that the password is within 8 to 128 characters
+      if (
+        passwordLength < 8 ||
+        passwordLength > 128
       ) {
         alert('password must be between 8 to 128 characters');
         figurePwLength();
@@ -111,7 +111,7 @@ function generatePassword() {
         passwordLength = parseInt(passwordLength);
         console.log('type of password:>>>>>', typeof passwordLength);
         //if it is included in the correctInputs array, stop 
-        if(correctInputs.includes(passwordLength)){
+        if (correctInputs.includes(passwordLength)) {
           return;
         }
         //if it is not in the array that means it's a letter
@@ -127,20 +127,23 @@ function generatePassword() {
       needLowerCase = confirm('Do you want to include lowercase letters?');
       needLowerCase = needLowerCase.toString();
       console.log(typeof needLowerCase);
-      if(needLowerCase){
+      if (needLowerCase) {
         calculatedArrayOptions = lettersLC;
       }
       //confirm if the user wants uppercase characters
       needUpperCase = confirm('Do you want to include upper case letters?');
       needUpperCase = needUpperCase.toString();
       console.log(typeof needUpperCase);
-      if(needUpperCase){
+      if (needUpperCase) {
         calculatedArrayOptions = calculatedArrayOptions + lettersUC;
       }
       //confirm if the user wants numbers
       needInteger = confirm("Do you want to include numbers?")
       needInteger = needInteger.toString();
       console.log(typeof needInteger);
+      if (needInteger) {
+        calculatedArrayOptions = calculatedArrayOptions + integer;
+      }
       //confirm if the user wants special characters
       needSpecialChar = confirm('Do you want special charcters?');
       needSpecialChar = needSpecialChar.toString();
@@ -150,7 +153,7 @@ function generatePassword() {
       console.log(result);
       console.log("passwordL", passwordLength);
     }
-   confirmCharTypes();
+    confirmCharTypes();
     //ensure that at least one type of special character was chosen
     if (
       result === "falsefalsefalsefalse"
@@ -160,81 +163,80 @@ function generatePassword() {
       );
       confirmCharTypes();
     }
-  //if all character types are true
+    //if all character types are true
     else if (
-    result === "truetruetruetrue"
-  ) {
-    calculatedArrayOptions = lettersLC.concat(lettersUC).concat(integer).concat(spChars);
-    console.log('allArrays:', allArrays)
-    console.log('passwordLength:', passwordLength)
-    password.shift();
-    console.log('new password:', password);
-    for (var i = 0; i < passwordLength + 1; i++) {
-      console.log('see if this works', password);
-      index = Math.floor(Math.random() * allArrays.length);
-      //how to get it be all of the i's added together
-      password = password.concat(allArrays[index - 1]);
-      
-    } 
-  } else if (
-    result === "truefalsefalsefalse"
-  ) {
-      
+      result === "truetruetruetrue"
+    ) {
+      // calculatedArrayOptions = lettersLC.concat(lettersUC).concat(integer).concat(spChars);
+      console.log('passwordLength:', passwordLength)
+      password.shift();
+      console.log('new password:', password);
+      for (var i = 0; i < passwordLength + 1; i++) {
+        console.log('see if this works', password);
+        index = Math.floor(Math.random() * allArrays.length);
+        //how to get it be all of the i's added together
+        password = password.concat(allArrays[index - 1]);
+
+      }
+    } else if (
+      result === "truefalsefalsefalse"
+    ) {
+
     } else if (
       result === "falsetruefalsefalse"
     ) {
-        
+
     } else if (
       result === "falsefalsetruefalse"
-  ) {
-      
+    ) {
+
     } else if (
       result === "falsefalsefalsetrue"
     ) {
-        
+
     } else if (
       result === "truefalsetruefalse"
     ) {
-        
+
     } else if (
       result === "falsetruetruetrue"
-      ) {
-            
+    ) {
+
     } else if (
       result === "truefalsetruetrue"
-      ) {
-          
+    ) {
+
     } else if (
       result === "truetruefalsetrue"
-      ) {
-          
+    ) {
+
     } else if (
       result === "truetruetruefalse"
-      ) {
-          
-    // } else if (
+    ) {
 
-    //   ) {
-          
-    // } else if (
+      // } else if (
 
-    //   ) {
-          
-    //     } 
+      //   ) {
 
-  }
+      // } else if (
+
+      //   ) {
+
+      //     } 
+
+    }
 
     //other conditions to come
 
-    password = password.toString();
+    password = password.join();
     console.log("Should be a string now", password);
-  generatePassword();
-}
+    generatePassword();
+  }
 
 // Write password to the #password input
 function writePassword() {
   console.log('hello');
- password = generatePassword();
+  var password = generatePassword();
   var passwordText = document.querySelector('#password');
 
   passwordText.value = password;
