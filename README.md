@@ -13,4 +13,8 @@ This password generator will allow you to create a password to you liking, by ch
 ## Credits
 Starter code provided by UNC Chapel Hill. The generatePassword() function and a few additional variables were created by Andrea Robbins.
 ## Screenshots
+![Screenshot](./assets/pw-generator-screenshot.png)
 ## Link to Repo and Deployed Application
+Link to Repo: https://github.com/anicrob/week-3-challenge
+
+Link to Deployed Application: 
